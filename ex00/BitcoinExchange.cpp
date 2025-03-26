@@ -1,8 +1,8 @@
 #include "BitcoinExchange.hpp"
 
-void BitcoinExchange::loadDatabase(const std::string &files)
+void BitcoinExchange::loadDatabase(const std::string &filename)
 {
-    std::ifstream file(files.c_str());
+    std::ifstream file(filename.c_str());
     std::string line, date, value_str;
     float value;
 
@@ -14,8 +14,8 @@ void BitcoinExchange::loadDatabase(const std::string &files)
 
     while (std::getline(file, line))
     {
-        std::istringstream iss(line);
-        if (std::getline(iss, date, ',') && std::getline(iss, value_str))
+        std::istringstream files(line);
+        if (std::getline(files, date, ',') && std::getline(files, value_str))
         {
             value = static_cast<float>(std::atof(value_str.c_str()));
             _database[date] = value;
@@ -40,8 +40,8 @@ void BitcoinExchange::convert(std::ifstream &inputFile) {
 
     while (std::getline(inputFile, line))
     {
-        std::istringstream iss(line);
-        if (std::getline(iss, date, '|') && (iss >> amount))
+        std::istringstream file(line);
+        if (std::getline(file, date, '|') && (file >> amount))
         {
             if (amount < 0)
             {
