@@ -39,7 +39,7 @@ int main(int argc, char **argv)
     end = clock();
     double time_deq = double(end - start) * 1000 / CLOCKS_PER_SEC;
     
-    std::cout << "Time to process a range of " << argc - 1<< " elements with std::deque: " << time_deq << " ms" << std::endl;
+    std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque: " << time_deq << " ms" << std::endl;
     
     return 0;
 }
