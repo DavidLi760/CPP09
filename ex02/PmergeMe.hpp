@@ -10,7 +10,6 @@
 # include <cstdlib>
 # include <sstream>
 
-
 template <typename T>
 void print_container(const std::string &msg, const T &container)
 {
@@ -20,8 +19,6 @@ void print_container(const std::string &msg, const T &container)
         std::cout << *it << ((it + 1 != container.end()) ? " " : "\n");
     }
 }
-
-std::vector<size_t> jacobsthal(size_t n);
 
 template <typename T>
 T ford_johnson_sort(T arr)
@@ -45,10 +42,9 @@ T ford_johnson_sort(T arr)
 
     main_chain = ford_johnson_sort(main_chain);
 
-    std::vector<size_t> insertion_order = jacobsthal(pend.size());
-    for (size_t i = 0; i < insertion_order.size(); ++i)
+    for (size_t i = 0; i < pend.size(); ++i)
     {
-        typename T::value_type value = pend[insertion_order[i]];
+        typename T::value_type value = pend[i];
         typename T::iterator pos = std::upper_bound(main_chain.begin(), main_chain.end(), value);
         main_chain.insert(pos, value);
     }
